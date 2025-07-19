@@ -125,45 +125,56 @@ gui.Name = "GardenRandomizerGUI"
 gui.ResetOnSpawn = false
 gui.Parent = localPlayer:WaitForChild("PlayerGui")
 
--- Main Frame (Garden Theme)
+-- Main Frame (Cute Garden Card Style)
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 200, 0, 160)
-frame.Position = UDim2.new(1, -220, 0, 10)
-frame.BackgroundColor3 = Color3.fromRGB(173, 216, 160) -- soft garden green
+frame.Size = UDim2.new(0, 220, 0, 180)
+frame.Position = UDim2.new(1, -240, 0, 20)
+frame.BackgroundColor3 = Color3.fromRGB(240, 255, 240) -- Mint cream
 frame.BorderSizePixel = 0
 frame.Parent = gui
 
 local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 16)
+corner.CornerRadius = UDim.new(0, 20)
 corner.Parent = frame
+
+-- Top Label
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 30)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "🌿 Egg Bloom Panel 🌸"
+title.TextColor3 = Color3.fromRGB(90, 130, 90)
+title.TextScaled = true
+title.Font = Enum.Font.FredokaOne
+title.Parent = frame
 
 -- Auto Stop Button
 local stopBtn = Instance.new("TextButton")
 stopBtn.Size = UDim2.new(1, -20, 0, 36)
-stopBtn.Position = UDim2.new(0, 10, 0, 12)
-stopBtn.BackgroundColor3 = Color3.fromRGB(120, 180, 90) -- plant green
+stopBtn.Position = UDim2.new(0, 10, 0, 40)
+stopBtn.BackgroundColor3 = Color3.fromRGB(174, 214, 161) -- Soft green
 stopBtn.TextColor3 = Color3.new(1, 1, 1)
-stopBtn.Text = "Egg Randomizer"
+stopBtn.Text = "🌼 Egg Randomizer"
 stopBtn.TextScaled = true
-stopBtn.Font = Enum.Font.GothamBold
+stopBtn.Font = Enum.Font.FredokaOne
 stopBtn.Parent = frame
 
-Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = (autoStopOn and "Egg Randomizer" or "By:Rayfield")
+    stopBtn.Text = (autoStopOn and "🌼 Egg Randomizer" or "🌸 By: Rayfield")
 end)
 
 -- Info Button
 local infoBtn = Instance.new("TextButton")
-infoBtn.Size = UDim2.new(0, 40, 0, 40)
-infoBtn.Position = UDim2.new(1, -50, 0, 12)
-infoBtn.BackgroundColor3 = Color3.fromRGB(252, 224, 120) -- sunflower yellow
-infoBtn.TextColor3 = Color3.new(0, 0, 0)
-infoBtn.Text = "🌼"
+infoBtn.Size = UDim2.new(0, 36, 0, 36)
+infoBtn.Position = UDim2.new(1, -46, 0, 90)
+infoBtn.BackgroundColor3 = Color3.fromRGB(252, 236, 161) -- Daisy yellow
+infoBtn.TextColor3 = Color3.new(0.2, 0.2, 0.2)
+infoBtn.Text = "🌻"
 infoBtn.TextScaled = true
-infoBtn.Font = Enum.Font.GothamBold
+infoBtn.Font = Enum.Font.FredokaOne
 infoBtn.Parent = frame
 
 Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(0, 10)
@@ -181,15 +192,15 @@ end)
 -- Reroll Button
 local autoBtn = Instance.new("TextButton")
 autoBtn.Size = UDim2.new(1, -20, 0, 36)
-autoBtn.Position = UDim2.new(0, 10, 0, 60)
-autoBtn.BackgroundColor3 = Color3.fromRGB(99, 164, 80) -- garden green
+autoBtn.Position = UDim2.new(0, 10, 0, 130)
+autoBtn.BackgroundColor3 = Color3.fromRGB(186, 221, 204) -- Light teal
 autoBtn.TextColor3 = Color3.new(1, 1, 1)
 autoBtn.Text = "🌱 Reroll Pet Display"
 autoBtn.TextScaled = true
-autoBtn.Font = Enum.Font.GothamBold
+autoBtn.Font = Enum.Font.FredokaOne
 autoBtn.Parent = frame
 
-Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 12)
 
 autoBtn.MouseButton1Click:Connect(function()
     for objectId, data in pairs(displayedEggs) do
