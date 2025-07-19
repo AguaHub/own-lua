@@ -9,7 +9,7 @@ local eggChances = {
     ["Oasis Egg"] = {["Meerkat"] = 42.55, ["Sand Snake"] = 18, ["Axolotl"] = 10, ["Hyacinth Macaw"] = 3, ["Fennec Fox"] = 1},
     ["Mythical Egg"] = {["Grey Mouse"] = 37.5, ["Brown Mouse"] = 26.79, ["Squirrel"] = 26.79, ["Red Giant Ant"] = 8.93, ["Red Fox"] = 1},
     ["Bug Egg"] = {["Snail"] = 40, ["Giant Ant"] = 35, ["Caterpillar"] = 25, ["Praying Mantis"] = 4.25, ["Dragon Fly"] = 1},
-    ["Night Egg"] = {["Hedgehog"] = 47, ["Mole"] = 23.5, ["Frog"] = 21.16, ["Echo Frog"] = 8.35, ["Night Owl"] = 4, ["Raccoon"] = 1},
+    ["Zen Egg"] = {["Shiba Inu"] = 47, ["Nihonzaru"] = 23.5, ["Tanuki"] = 21.16, ["Tanchozuru"] = 8.35, ["Kappa"] = 4, ["Kitsune"] = 0.08},
     ["Bee Egg"] = {["Bee"] = 65, ["Honey Bee"] = 20, ["Bear Bee"] = 10, ["Petal Bee"] = 5, ["Queen Bee"] = 1},
     ["Anti Bee Egg"] = {["Wasp"] = 55, ["Tarantula Hawk"] = 31, ["Moth"] = 14, ["Butterfly"] = 1, ["Disco Bee"] = 0.25},
     ["Common Summer Egg"] = {["Starfish"] = 50, ["Seagull"] = 25, ["Crab"] = 25},
