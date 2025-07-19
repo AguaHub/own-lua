@@ -120,89 +120,83 @@ end
 collectionService:GetInstanceAddedSignal("PetEggServer"):Connect(addESP)
 collectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(removeESP)
 
+-- GUI Setup
 local gui = Instance.new("ScreenGui")
 gui.Name = "GardenRandomizerGUI"
 gui.ResetOnSpawn = false
 gui.Parent = localPlayer:WaitForChild("PlayerGui")
 
--- Main Frame (Cute Garden Card Style)
+-- Main Frame
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 220, 0, 180)
-frame.Position = UDim2.new(1, -240, 0, 20)
-frame.BackgroundColor3 = Color3.fromRGB(240, 255, 240) -- Mint cream
+frame.Size = UDim2.new(0, 270, 0, 180)
+frame.Position = UDim2.new(1, -290, 0, 40)
+frame.BackgroundColor3 = Color3.fromRGB(218, 243, 201)
 frame.BorderSizePixel = 0
 frame.Parent = gui
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 18)
 
-local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 20)
-corner.Parent = frame
-
--- Top Label
+-- Title
 local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1, 0, 0, 30)
-title.Position = UDim2.new(0, 0, 0, 0)
+title.Size = UDim2.new(1, 0, 0, 35)
 title.BackgroundTransparency = 1
-title.Text = "🌿 Egg Randomizer"
-title.TextColor3 = Color3.fromRGB(90, 130, 90)
+title.Text = "🌼 Egg Randomizer"
+title.TextColor3 = Color3.fromRGB(60, 100, 60)
 title.TextScaled = true
 title.Font = Enum.Font.FredokaOne
 title.Parent = frame
 
--- Auto Stop Button
+-- Auto Stop Toggle Button
 local stopBtn = Instance.new("TextButton")
-stopBtn.Size = UDim2.new(1, -20, 0, 36)
-stopBtn.Position = UDim2.new(0, 10, 0, 40)
-stopBtn.BackgroundColor3 = Color3.fromRGB(174, 214, 161) -- Soft green
-stopBtn.TextColor3 = Color3.new(1, 1, 1)
-stopBtn.Text = "🌼 ESP: ON"
+stopBtn.Size = UDim2.new(1, -40, 0, 36)
+stopBtn.Position = UDim2.new(0, 20, 0, 40)
+stopBtn.BackgroundColor3 = Color3.fromRGB(139, 204, 104)
+stopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+stopBtn.Text = "[A] Auto Stop: ON"
 stopBtn.TextScaled = true
 stopBtn.Font = Enum.Font.FredokaOne
 stopBtn.Parent = frame
-
 Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = (autoStopOn and "🌼 ESP: ON" or "🌸 ESP: OFF")
+    stopBtn.Text = autoStopOn and "[A] Auto Stop: ON" or "[A] Auto Stop: OFF"
 end)
 
--- Info Button
+-- Info Button (Yellow Question)
 local infoBtn = Instance.new("TextButton")
 infoBtn.Size = UDim2.new(0, 36, 0, 36)
-infoBtn.Position = UDim2.new(1, -46, 0, 90)
-infoBtn.BackgroundColor3 = Color3.fromRGB(252, 236, 161) -- Daisy yellow
-infoBtn.TextColor3 = Color3.new(0.2, 0.2, 0.2)
-infoBtn.Text = "🌻 Info"
+infoBtn.Position = UDim2.new(1, -50, 0, 40)
+infoBtn.BackgroundColor3 = Color3.fromRGB(255, 202, 88)
+infoBtn.TextColor3 = Color3.fromRGB(100, 60, 10)
+infoBtn.Text = "?"
 infoBtn.TextScaled = true
 infoBtn.Font = Enum.Font.FredokaOne
 infoBtn.Parent = frame
-
-Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(1, 0)
 
 infoBtn.MouseButton1Click:Connect(function()
     pcall(function()
         game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "🌸 Garden Info",
-            Text = "Auto Stop for: Raccoon, Dragonfly, Queen Bee, Red Fox, Disco Bee, Butterfly.",
+            Title = "🌼 Info",
+            Text = "Auto Stop targets: Queen Bee, Dragonfly, Red Fox, etc.",
             Duration = 6
         })
     end)
 end)
 
--- Reroll Button
-local autoBtn = Instance.new("TextButton")
-autoBtn.Size = UDim2.new(1, -20, 0, 36)
-autoBtn.Position = UDim2.new(0, 10, 0, 130)
-autoBtn.BackgroundColor3 = Color3.fromRGB(186, 221, 204) -- Light teal
-autoBtn.TextColor3 = Color3.new(1, 1, 1)
-autoBtn.Text = "🥚 Reroll Pet"
-autoBtn.TextScaled = true
-autoBtn.Font = Enum.Font.FredokaOne
-autoBtn.Parent = frame
+-- Reroll Button (Watering Can)
+local rerollBtn = Instance.new("TextButton")
+rerollBtn.Size = UDim2.new(1, -40, 0, 36)
+rerollBtn.Position = UDim2.new(0, 20, 0, 100)
+rerollBtn.BackgroundColor3 = Color3.fromRGB(93, 156, 89)
+rerollBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+rerollBtn.Text = "🌱 B) Reroll Pet Display"
+rerollBtn.TextScaled = true
+rerollBtn.Font = Enum.Font.FredokaOne
+rerollBtn.Parent = frame
+Instance.new("UICorner", rerollBtn).CornerRadius = UDim.new(0, 12)
 
-Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 12)
-
-autoBtn.MouseButton1Click:Connect(function()
+rerollBtn.MouseButton1Click:Connect(function()
     for objectId, data in pairs(displayedEggs) do
         local pet = getNonRepeatingRandomPet(data.eggName, data.lastPet)
         if pet and data.label then
