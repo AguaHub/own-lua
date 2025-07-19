@@ -152,7 +152,7 @@ Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 10)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = (autoStopOn and "🌿 Auto Stop: ON" or "🌿 Auto Stop: OFF")
+    stopBtn.Text = (autoStopOn and "🌿 Egg Randomizer" or "🌿 By: Rayfield")
 end)
 
 -- Info Button
