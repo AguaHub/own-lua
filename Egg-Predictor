@@ -4,13 +4,13 @@ local localPlayer = players.LocalPlayer or players:GetPlayers()[1]
 
 local eggChances = {
     ["Common Egg"] = {["Dog"] = 33, ["Bunny"] = 33, ["Golden Lab"] = 33},
-    ["Oasis Egg"] = {["Meerkat"] = 45, ["Sand Snake"] = 34.5, ["Axolotl"] = 15, ["Hyacinth Macaw"] = 5, ["Fennec Fox"] = 0.25},
-    ["Primal Egg"] = {["Iguanodon"] = 18, ["Pachycephalosaurus"] = 15, ["Dilophosaurus"] = 5, ["Ankylosaurus"] = 3, ["Spinosaurus"] = 1},
-    ["Dinosaur Egg"] = {["Raptor"] = 22, ["Triceratops"] = 15, ["Stegosaurus"] = 8, ["Brontosaurus"] = 3, ["T-Rex"] = 1},
-    ["Mythical Egg"] = {["Grey Mouse"] = 37.5, ["Brown Mouse"] = 26.79, ["Squirrel"] = 26.79, ["Red Giant Ant"] = 8.93, ["Red Fox"] = 1.26},
-    ["Bug Egg"] = {["Snail"] = 40, ["Giant Ant"] = 35, ["Caterpillar"] = 25, ["Praying Mantis"] = 4.25, ["Dragon Fly"] = 1},
-    ["Night Egg"] = {["Hedgehog"] = 47, ["Mole"] = 23.5, ["Frog"] = 21.16, ["Echo Frog"] = 8.35, ["Night Owl"] = 3, ["Raccoon"] = 1},
-    ["Bee Egg"] = {["Bee"] = 65, ["Honey Bee"] = 20, ["Bear Bee"] = 10, ["Petal Bee"] = 5, ["Queen Bee"] = 0},
+    ["Primal Egg"] = {["Iguanodon"] = 15, ["Pachycephalosaurus = 10, ["Dilophosaurus"] = 3, ["Ankylosaurus"] = 1, ["Spinosaurus"] = 0.25},
+    ["Rare Egg"] = {["Orange Tabby"] = 33.33, ["Spotted Deer"] = 25, ["Pig"] = 16.67, ["Rooster"] = 16.67, ["Monkey"] = 8.33},
+    ["Legendary Egg"] = {["Cow"] = 42.55, ["Silver Monkey"] = 42.55, ["Sea Otter"] = 10.64, ["Turtle"] = 2.13, ["Polar Bear"] = 2.13},
+    ["Mythical Egg"] = {["Grey Mouse"] = 37.5, ["Brown Mouse"] = 26.79, ["Squirrel"] = 26.79, ["Red Giant Ant"] = 8.93, ["Red Fox"] = 1.23},
+    ["Bug Egg"] = {["Snail"] = 40, ["Giant Ant"] = 35, ["Caterpillar"] = 25, ["Praying Mantis"] = 0, ["Dragon Fly"] = 0},
+    ["Night Egg"] = {["Hedgehog"] = 47, ["Mole"] = 23.5, ["Frog"] = 21.16, ["Echo Frog"] = 8.35, ["Night Owl"] = 13, ["Raccoon"] = 1},
+    ["Bee Egg"] = {["Bee"] = 65, ["Honey Bee"] = 20, ["Bear Bee"] = 10, ["Petal Bee"] = 5, ["Queen Bee"] = 1},
     ["Anti Bee Egg"] = {["Wasp"] = 55, ["Tarantula Hawk"] = 31, ["Moth"] = 14, ["Butterfly"] = 1, ["Disco Bee"] = 0.25},
     ["Common Summer Egg"] = {["Starfish"] = 50, ["Seafull"] = 25, ["Crab"] = 25},
     ["Rare Summer Egg"] = {["Flamingo"] = 30, ["Toucan"] = 25, ["Sea Turtle"] = 20, ["Orangutan"] = 15, ["Seal"] = 10},
@@ -128,7 +128,7 @@ gui.Parent = localPlayer:WaitForChild("PlayerGui")
 local stopBtn = Instance.new("TextButton", gui)
 stopBtn.Size = UDim2.new(0, 150, 0, 40)
 stopBtn.Position = UDim2.new(1, -190, 0, 0)
-stopBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- changed to black
+stopBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 stopBtn.TextColor3 = Color3.new(1, 1, 1)
 stopBtn.Text = "[A] Auto Stop: ON"
 stopBtn.TextScaled = true
@@ -141,7 +141,7 @@ end)
 local info = Instance.new("TextButton", gui)
 info.Size = UDim2.new(0, 30, 0, 40)
 info.Position = UDim2.new(1, -35, 0, 0)
-info.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- changed to black
+info.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
 info.TextColor3 = Color3.new(1, 1, 1)
 info.Text = "?"
 info.TextScaled = true
@@ -159,8 +159,17 @@ end)
 local autoBtn = Instance.new("TextButton", gui)
 autoBtn.Size = UDim2.new(0, 150, 0, 40)
 autoBtn.Position = UDim2.new(1, -190, 0, 45)
-autoBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- changed to black
+autoBtn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 autoBtn.TextColor3 = Color3.new(1, 1, 1)
 autoBtn.Text = "[B] Reroll Pet Display"
 autoBtn.TextScaled = true
 
+autoBtn.MouseButton1Click:Connect(function()
+    for objectId, data in pairs(displayedEggs) do
+        local pet = getNonRepeatingRandomPet(data.eggName, data.lastPet)
+        if pet and data.label then
+            data.label.Text = data.eggName .. " | " .. pet
+            data.lastPet = pet
+        end
+    end
+end)
