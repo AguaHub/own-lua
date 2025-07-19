@@ -125,55 +125,55 @@ gui.Name = "GardenRandomizerGUI"
 gui.ResetOnSpawn = false
 gui.Parent = localPlayer:WaitForChild("PlayerGui")
 
--- Main Frame
+-- Main Frame (Garden Theme)
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 180, 0, 140)
-frame.Position = UDim2.new(1, -200, 0, 10)
-frame.BackgroundColor3 = Color3.fromRGB(204, 233, 202)
+frame.Size = UDim2.new(0, 200, 0, 160)
+frame.Position = UDim2.new(1, -220, 0, 10)
+frame.BackgroundColor3 = Color3.fromRGB(173, 216, 160) -- soft garden green
 frame.BorderSizePixel = 0
 frame.Parent = gui
 
 local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 12)
+corner.CornerRadius = UDim.new(0, 16)
 corner.Parent = frame
 
 -- Auto Stop Button
 local stopBtn = Instance.new("TextButton")
 stopBtn.Size = UDim2.new(1, -20, 0, 36)
-stopBtn.Position = UDim2.new(0, 10, 0, 10)
-stopBtn.BackgroundColor3 = Color3.fromRGB(140, 198, 63) -- green
+stopBtn.Position = UDim2.new(0, 10, 0, 12)
+stopBtn.BackgroundColor3 = Color3.fromRGB(120, 180, 90) -- plant green
 stopBtn.TextColor3 = Color3.new(1, 1, 1)
-stopBtn.Text = "[A] Auto Stop: ON"
+stopBtn.Text = "🌿 Auto Stop: ON"
 stopBtn.TextScaled = true
 stopBtn.Font = Enum.Font.GothamBold
 stopBtn.Parent = frame
 
-Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 10)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = autoStopOn and "[A] Auto Stop: ON" or "[A] Auto Stop: OFF"
+    stopBtn.Text = (autoStopOn and "🌿 Auto Stop: ON" or "🌿 Auto Stop: OFF")
 end)
 
 -- Info Button
 local infoBtn = Instance.new("TextButton")
-infoBtn.Size = UDim2.new(0, 36, 0, 36)
-infoBtn.Position = UDim2.new(1, -46, 0, 10)
-infoBtn.BackgroundColor3 = Color3.fromRGB(255, 214, 102) -- yellow
+infoBtn.Size = UDim2.new(0, 40, 0, 40)
+infoBtn.Position = UDim2.new(1, -50, 0, 12)
+infoBtn.BackgroundColor3 = Color3.fromRGB(252, 224, 120) -- sunflower yellow
 infoBtn.TextColor3 = Color3.new(0, 0, 0)
-infoBtn.Text = "?"
+infoBtn.Text = "🌼"
 infoBtn.TextScaled = true
 infoBtn.Font = Enum.Font.GothamBold
 infoBtn.Parent = frame
 
-Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(0, 10)
 
 infoBtn.MouseButton1Click:Connect(function()
     pcall(function()
         game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Info 🌻",
-            Text = "Auto Stop when found: Raccoon, Dragonfly, Queen Bee, Red Fox, Disco Bee, Butterfly.",
-            Duration = 5
+            Title = "🌸 Garden Info",
+            Text = "Auto Stop for: Raccoon, Dragonfly, Queen Bee, Red Fox, Disco Bee, Butterfly.",
+            Duration = 6
         })
     end)
 end)
@@ -181,15 +181,15 @@ end)
 -- Reroll Button
 local autoBtn = Instance.new("TextButton")
 autoBtn.Size = UDim2.new(1, -20, 0, 36)
-autoBtn.Position = UDim2.new(0, 10, 0, 56)
-autoBtn.BackgroundColor3 = Color3.fromRGB(112, 176, 72) -- darker green
+autoBtn.Position = UDim2.new(0, 10, 0, 60)
+autoBtn.BackgroundColor3 = Color3.fromRGB(99, 164, 80) -- garden green
 autoBtn.TextColor3 = Color3.new(1, 1, 1)
-autoBtn.Text = "[B] Reroll Pet Display"
+autoBtn.Text = "🌱 Reroll Pet Display"
 autoBtn.TextScaled = true
 autoBtn.Font = Enum.Font.GothamBold
 autoBtn.Parent = frame
 
-Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 10)
 
 autoBtn.MouseButton1Click:Connect(function()
     for objectId, data in pairs(displayedEggs) do
