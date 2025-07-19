@@ -142,7 +142,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 30)
 title.Position = UDim2.new(0, 0, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "🌿 Egg Bloom Panel 🌸"
+title.Text = "🌿 Egg Randomizer"
 title.TextColor3 = Color3.fromRGB(90, 130, 90)
 title.TextScaled = true
 title.Font = Enum.Font.FredokaOne
@@ -163,7 +163,7 @@ Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = (autoStopOn and "🌼 Egg Randomizer" or "🌸 By: Rayfield")
+    stopBtn.Text = (autoStopOn and "🌼 ESP: ON" or "🌸 ESP: OFF")
 end)
 
 -- Info Button
@@ -172,7 +172,7 @@ infoBtn.Size = UDim2.new(0, 36, 0, 36)
 infoBtn.Position = UDim2.new(1, -46, 0, 90)
 infoBtn.BackgroundColor3 = Color3.fromRGB(252, 236, 161) -- Daisy yellow
 infoBtn.TextColor3 = Color3.new(0.2, 0.2, 0.2)
-infoBtn.Text = "🌻"
+infoBtn.Text = "🌻 Info"
 infoBtn.TextScaled = true
 infoBtn.Font = Enum.Font.FredokaOne
 infoBtn.Parent = frame
@@ -195,7 +195,7 @@ autoBtn.Size = UDim2.new(1, -20, 0, 36)
 autoBtn.Position = UDim2.new(0, 10, 0, 130)
 autoBtn.BackgroundColor3 = Color3.fromRGB(186, 221, 204) -- Light teal
 autoBtn.TextColor3 = Color3.new(1, 1, 1)
-autoBtn.Text = "🌱 Reroll Pet Display"
+autoBtn.Text = "🥚 Reroll Pet"
 autoBtn.TextScaled = true
 autoBtn.Font = Enum.Font.FredokaOne
 autoBtn.Parent = frame
