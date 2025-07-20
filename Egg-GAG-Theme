@@ -159,7 +159,7 @@ Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
 
 stopBtn.MouseButton1Click:Connect(function()
     autoStopOn = not autoStopOn
-    stopBtn.Text = autoStopOn and "[A] Auto Stop: ON" or "[A] Auto Stop: OF"
+    stopBtn.Text = autoStopOn and "🥚 [A] Auto Stop: ON" or "🥚 [A] Auto Stop: OFF"
 end)
 
 -- Reroll Button (Watering Can)
