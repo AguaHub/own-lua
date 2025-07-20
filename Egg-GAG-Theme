@@ -128,81 +128,58 @@ gui.Parent = localPlayer:WaitForChild("PlayerGui")
 
 -- Main Frame
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 250, 0, 200)
-frame.Position = UDim2.new(1, -270, 0, 40)
-frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.Size = UDim2.new(0, 270, 0, 180)
+frame.Position = UDim2.new(1, -290, 0, 40)
+frame.BackgroundColor3 = Color3.fromRGB(218, 243, 201)
 frame.BorderSizePixel = 0
 frame.Parent = gui
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
-
--- Close Button (X)
-local closeBtn = Instance.new("TextButton")
-closeBtn.Size = UDim2.new(0, 20, 0, 20)
-closeBtn.Position = UDim2.new(1, -25, 0, 5)
-closeBtn.Text = "✕"
-closeBtn.TextColor3 = Color3.fromRGB(255, 50, 50)
-closeBtn.BackgroundTransparency = 1
-closeBtn.Font = Enum.Font.GothamBold
-closeBtn.TextScaled = true
-closeBtn.Parent = frame
-closeBtn.MouseButton1Click:Connect(function()
-    gui:Destroy()
-end)
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 18)
 
 -- Title
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 35)
-title.Position = UDim2.new(0, 0, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "🥚 Egg Randomizer"
-title.TextColor3 = Color3.new(1, 1, 1)
+title.Text = "🌼 Egg Randomizer"
+title.TextColor3 = Color3.fromRGB(60, 100, 60)
 title.TextScaled = true
-title.Font = Enum.Font.GothamBold
+title.Font = Enum.Font.FredokaOne
 title.Parent = frame
 
--- ESP Button
-local espBtn = Instance.new("TextButton")
-espBtn.Size = UDim2.new(1, -20, 0, 36)
-espBtn.Position = UDim2.new(0, 10, 0, 40)
-espBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-espBtn.TextColor3 = Color3.fromRGB(200, 200, 255)
-espBtn.Text = "🔍 ESP: ON"
-espBtn.TextScaled = true
-espBtn.Font = Enum.Font.Gotham
-espBtn.Parent = frame
-Instance.new("UICorner", espBtn).CornerRadius = UDim.new(0, 8)
+-- Auto Stop Toggle Button
+local stopBtn = Instance.new("TextButton")
+stopBtn.Size = UDim2.new(1, -40, 0, 36)
+stopBtn.Position = UDim2.new(0, 20, 0, 40)
+stopBtn.BackgroundColor3 = Color3.fromRGB(139, 204, 104)
+stopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+stopBtn.Text = "🥚 [A] Auto Stop: ON"
+stopBtn.TextScaled = true
+stopBtn.Font = Enum.Font.FredokaOne
+stopBtn.Parent = frame
+Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
 
--- Auto Randomize Button
-local autoBtn = Instance.new("TextButton")
-autoBtn.Size = UDim2.new(1, -20, 0, 36)
-autoBtn.Position = UDim2.new(0, 10, 0, 85)
-autoBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-autoBtn.TextColor3 = Color3.fromRGB(150, 200, 255)
-autoBtn.Text = "🔁 Auto Randomize: OFF"
-autoBtn.TextScaled = true
-autoBtn.Font = Enum.Font.Gotham
-autoBtn.Parent = frame
-Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 8)
+stopBtn.MouseButton1Click:Connect(function()
+    autoStopOn = not autoStopOn
+    stopBtn.Text = autoStopOn and "🥚 [A] Auto Stop: ON" or "🥚 [A] Auto Stop: OFF"
+end)
 
--- Randomize Once Button
+-- Reroll Button (Watering Can)
 local rerollBtn = Instance.new("TextButton")
-rerollBtn.Size = UDim2.new(1, -20, 0, 36)
-rerollBtn.Position = UDim2.new(0, 10, 0, 130)
-rerollBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-rerollBtn.TextColor3 = Color3.new(1, 1, 1)
-rerollBtn.Text = "🔴 Randomize Once"
+rerollBtn.Size = UDim2.new(1, -40, 0, 36)
+rerollBtn.Position = UDim2.new(0, 20, 0, 100)
+rerollBtn.BackgroundColor3 = Color3.fromRGB(93, 156, 89)
+rerollBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+rerollBtn.Text = "🥚 [B] Reroll Pet"
 rerollBtn.TextScaled = true
-rerollBtn.Font = Enum.Font.GothamBold
+rerollBtn.Font = Enum.Font.FredokaOne
 rerollBtn.Parent = frame
-Instance.new("UICorner", rerollBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", rerollBtn).CornerRadius = UDim.new(0, 12)
 
--- Rare Pet Found Label
-local foundLabel = Instance.new("TextLabel")
-foundLabel.Size = UDim2.new(1, 0, 0, 30)
-foundLabel.Position = UDim2.new(0, 0, 1, -30)
-foundLabel.BackgroundTransparency = 1
-foundLabel.Text = "Rare Pet Found!"
-foundLabel.TextColor3 = Color3.new(1, 1, 1)
-foundLabel.TextScaled = true
-foundLabel.Font = Enum.Font.GothamSemibold
-foundLabel.Parent = frame
+rerollBtn.MouseButton1Click:Connect(function()
+    for objectId, data in pairs(displayedEggs) do
+        local pet = getNonRepeatingRandomPet(data.eggName, data.lastPet)
+        if pet and data.label then
+            data.label.Text = data.eggName .. " | " .. pet
+            data.lastPet = pet
+        end
+    end
+end)
