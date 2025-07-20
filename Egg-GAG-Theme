@@ -245,3 +245,7 @@ end
 collectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
 collectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
 runService.PreRender:Connect(UpdateEspPositions)
+
+
+
+
