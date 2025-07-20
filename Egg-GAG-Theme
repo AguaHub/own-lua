@@ -11,7 +11,7 @@ local statusLabel = gui:WaitForChild("StatusLabel")
 
 -- CONFIGURATION: Egg chances
 local eggChances = {
-    ["Common Egg"] = {["Dog"] = 33, ["Bunny"] = 33, ["Golden Lab"] = 33},
+    ["Common Egg"] = {["Dog"] = 33, ["Bunny"] = 33, ["Golden Lab"] = 34},
     ["Uncommon Egg"] = {["Black Bunny"] = 25, ["Chicken"] = 25, ["Cat"] = 25, ["Deer"] = 25},
     ["Dinosaur Egg"] = {["Raptor"] = 33, ["Triceratops"] = 25, ["Stegosaurus"] = 15, ["Brontosaurus"] = 3, ["T-Rex"] = 1},
     ["Oasis Egg"] = {["Meerkat"] = 42.55, ["Sand Snake"] = 18, ["Axolotl"] = 10, ["Hyacinth Macaw"] = 3, ["Fennec Fox"] = 1},
