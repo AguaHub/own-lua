@@ -128,20 +128,19 @@ gui.Parent = localPlayer:WaitForChild("PlayerGui")
 
 -- Main Frame
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 280, 0, 190)
-frame.Position = UDim2.new(1, -300, 0, 40)
-frame.BackgroundColor3 = Color3.fromRGB(197, 230, 178)
-frame.BorderColor3 = Color3.fromRGB(121, 172, 120)
-frame.BorderSizePixel = 2
+frame.Size = UDim2.new(0, 270, 0, 180)
+frame.Position = UDim2.new(1, -290, 0, 40)
+frame.BackgroundColor3 = Color3.fromRGB(218, 243, 201)
+frame.BorderSizePixel = 0
 frame.Parent = gui
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 20)
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 18)
 
 -- Title
 local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1, 0, 0, 38)
+title.Size = UDim2.new(1, 0, 0, 35)
 title.BackgroundTransparency = 1
-title.Text = "🌷 Garden Egg Randomizer"
-title.TextColor3 = Color3.fromRGB(56, 90, 60)
+title.Text = "🌼 Egg Randomizer"
+title.TextColor3 = Color3.fromRGB(60, 100, 60)
 title.TextScaled = true
 title.Font = Enum.Font.FredokaOne
 title.Parent = frame
@@ -149,36 +148,38 @@ title.Parent = frame
 -- Auto Stop Toggle Button
 local stopBtn = Instance.new("TextButton")
 stopBtn.Size = UDim2.new(1, -40, 0, 36)
-stopBtn.Position = UDim2.new(0, 20, 0, 50)
-stopBtn.BackgroundColor3 = Color3.fromRGB(144, 200, 127)
-stopBtn.BorderColor3 = Color3.fromRGB(80, 130, 80)
+stopBtn.Position = UDim2.new(0, 20, 0, 40)
+stopBtn.BackgroundColor3 = Color3.fromRGB(139, 204, 104)
 stopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-stopBtn.Text = "🌿 [A] Auto Stop: ON"
+stopBtn.Text = "🥚 [A] Auto Stop: ON"
 stopBtn.TextScaled = true
 stopBtn.Font = Enum.Font.FredokaOne
 stopBtn.Parent = frame
-Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 14)
+Instance.new("UICorner", stopBtn).CornerRadius = UDim.new(0, 12)
+
+stopBtn.MouseButton1Click:Connect(function()
+    autoStopOn = not autoStopOn
+    stopBtn.Text = autoStopOn and "🥚 [A] Auto Stop: ON" or "🥚 [A] Auto Stop: OFF"
+end)
 
 -- Reroll Button (Watering Can)
 local rerollBtn = Instance.new("TextButton")
 rerollBtn.Size = UDim2.new(1, -40, 0, 36)
-rerollBtn.Position = UDim2.new(0, 20, 0, 110)
-rerollBtn.BackgroundColor3 = Color3.fromRGB(110, 172, 95)
-rerollBtn.BorderColor3 = Color3.fromRGB(70, 120, 70)
+rerollBtn.Position = UDim2.new(0, 20, 0, 100)
+rerollBtn.BackgroundColor3 = Color3.fromRGB(93, 156, 89)
 rerollBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-rerollBtn.Text = "💧 [B] Reroll Pet"
+rerollBtn.Text = "🥚 [B] Reroll Pet"
 rerollBtn.TextScaled = true
 rerollBtn.Font = Enum.Font.FredokaOne
 rerollBtn.Parent = frame
-Instance.new("UICorner", rerollBtn).CornerRadius = UDim.new(0, 14)
+Instance.new("UICorner", rerollBtn).CornerRadius = UDim.new(0, 12)
 
--- Optional Flower Emoji Decorative Label
-local flowerLabel = Instance.new("TextLabel")
-flowerLabel.Size = UDim2.new(0, 30, 0, 30)
-flowerLabel.Position = UDim2.new(0, -10, 0, -10)
-flowerLabel.BackgroundTransparency = 1
-flowerLabel.Text = "🌸"
-flowerLabel.TextScaled = true
-flowerLabel.Font = Enum.Font.FredokaOne
-flowerLabel.TextColor3 = Color3.fromRGB(240, 150, 200)
-flowerLabel.Parent = frame
+rerollBtn.MouseButton1Click:Connect(function()
+    for objectId, data in pairs(displayedEggs) do
+        local pet = getNonRepeatingRandomPet(data.eggName, data.lastPet)
+        if pet and data.label then
+            data.label.Text = data.eggName .. " | " .. pet
+            data.lastPet = pet
+        end
+    end
+end)
