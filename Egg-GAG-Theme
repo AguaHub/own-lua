@@ -151,7 +151,7 @@ stopBtn.Size = UDim2.new(1, -40, 0, 36)
 stopBtn.Position = UDim2.new(0, 20, 0, 40)
 stopBtn.BackgroundColor3 = Color3.fromRGB(139, 204, 104)
 stopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-stopBtn.Text = "[A] Auto Stop: ON"
+stopBtn.Text = "🥚 [A] Auto Stop: ON"
 stopBtn.TextScaled = true
 stopBtn.Font = Enum.Font.FredokaOne
 stopBtn.Parent = frame
@@ -162,35 +162,13 @@ stopBtn.MouseButton1Click:Connect(function()
     stopBtn.Text = autoStopOn and "[A] Auto Stop: ON" or "[A] Auto Stop: OFF"
 end)
 
--- Info Button (Yellow Question)
-local infoBtn = Instance.new("TextButton")
-infoBtn.Size = UDim2.new(0, 36, 0, 36)
-infoBtn.Position = UDim2.new(1, -50, 0, 40)
-infoBtn.BackgroundColor3 = Color3.fromRGB(255, 202, 88)
-infoBtn.TextColor3 = Color3.fromRGB(100, 60, 10)
-infoBtn.Text = "?"
-infoBtn.TextScaled = true
-infoBtn.Font = Enum.Font.FredokaOne
-infoBtn.Parent = frame
-Instance.new("UICorner", infoBtn).CornerRadius = UDim.new(1, 0)
-
-infoBtn.MouseButton1Click:Connect(function()
-    pcall(function()
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "🌼 Info",
-            Text = "Auto Stop targets: Queen Bee, Dragonfly, Red Fox, etc.",
-            Duration = 6
-        })
-    end)
-end)
-
 -- Reroll Button (Watering Can)
 local rerollBtn = Instance.new("TextButton")
 rerollBtn.Size = UDim2.new(1, -40, 0, 36)
 rerollBtn.Position = UDim2.new(0, 20, 0, 100)
 rerollBtn.BackgroundColor3 = Color3.fromRGB(93, 156, 89)
 rerollBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-rerollBtn.Text = "🌱 B) Reroll Pet Display"
+rerollBtn.Text = "🥚 [B] Reroll Pet"
 rerollBtn.TextScaled = true
 rerollBtn.Font = Enum.Font.FredokaOne
 rerollBtn.Parent = frame
