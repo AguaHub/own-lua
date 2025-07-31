@@ -12,15 +12,15 @@ local petTable = {
     ["Uncommon Egg"] = { "Chicken", "Black Bunny", "Cat", "Deer" },
     ["Rare Egg"] = { "Pig", "Monkey", "Rooster", "Orange Tabby", "Spotted Deer" },
     ["Zen Egg"] = { "Shiba Inu", "Nihonzaru", "Tanchozuru", "Kappa", "Kitsune" },
-    ["Mythical Egg"] = { "Grey Mouse", "Brown Mouse", "Squirrel", "Red Giant Ant" },
-    ["Bug Egg"] = { "Snail", "Caterpillar", "Giant Ant", "Praying Mantis" },
-    ["Night Egg"] = { "Frog", "Hedgehog", "Mole", "Echo Frog", "Night Owl", },
-    ["Bee Egg"] = { "Bee", "Honey Bee", "Bear Bee", "Petal Bee" },
-    ["Anti Bee Egg"] = { "Wasp", "Moth", "Tarantula Hawk" },
-    ["Oasis Egg"] = { "Meerkat", "Sand Snake", "Axolotl" },
-    ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara" },
-    ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
-    ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
+    ["Mythical Egg"] = { "Grey Mouse", "Brown Mouse", "Squirrel", "Red Giant Ant", "Red Fox" },
+    ["Bug Egg"] = { "Snail", "Caterpillar", "Giant Ant", "Praying Mantis", "Dragonfly" },
+    ["Night Egg"] = { "Frog", "Hedgehog", "Mole", "Echo Frog", "Night Owl", "Raccoon" },
+    ["Bee Egg"] = { "Bee", "Honey Bee", "Bear Bee", "Petal Bee", "Queen Bee" },
+    ["Anti Bee Egg"] = { "Wasp", "Moth", "Tarantula Hawk", "Butterfly", "Disco Bee" },
+    ["Oasis Egg"] = { "Meerkat", "Sand Snake", "Axolotl", "Hyacinth Macaw", "Fennec" },
+    ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara", "Scarlet Macaw", "Mimic Octopus" },
+    ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus", "Brontosaurus", "T-Rex" },
+    ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus", "Dilophosaurus", "Ankylosaurus" },
 }
 
 local espEnabled = true
@@ -245,9 +245,9 @@ autoBtn.TextColor3 = Color3.new(1, 1, 1)
 
 local autoRunning = false
 local bestPets = {
-    ["Raccoon"] = true, ["Dragonfly"] = true, ["Queen Bee"] = true,
-    ["Disco Bee"] = true, ["Fennec Fox"] = true, ["Fox"] = true,
-    ["Mimic Octopus"] = true
+    ["Raccoon"] = false, ["Dragonfly"] = false, ["Queen Bee"] = false,
+    ["Disco Bee"] = false, ["Fennec Fox"] = false, ["Fox"] = false,
+    ["Mimic Octopus"] = false
 }
 
 autoBtn.MouseButton1Click:Connect(function()
