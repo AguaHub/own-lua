@@ -1,0 +1,59 @@
+-- SERVICES
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+-- MAIN UI SETUP
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "FreezeTrader"
+screenGui.ResetOnSpawn = false
+screenGui.IgnoreGuiInset = true
+screenGui.Parent = PlayerGui
+
+-- CUSTOM PIXEL BACKGROUND FRAME
+local background = Instance.new("Frame")
+background.Size = UDim2.new(0, 300, 0, 200)
+background.Position = UDim2.new(0.5, -150, 0.5, -100)
+background.BackgroundColor3 = Color3.fromRGB(56, 122, 78)
+background.BorderSizePixel = 0
+background.Parent = screenGui
+
+-- UICorner for rounded edges
+local uiCorner = Instance.new("UICorner", background)
+uiCorner.CornerRadius = UDim.new(0, 8)
+
+-- Custom Minecraft-style label
+local title = Instance.new("TextLabel")
+title.Text = "⛏️ Freeze Trader"
+title.Font = Enum.Font.Arcade
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextScaled = true
+title.Size = UDim2.new(1, 0, 0, 50)
+title.BackgroundTransparency = 1
+title.Parent = background
+
+-- Subtitle
+local subtitle = Instance.new("TextLabel")
+subtitle.Text = "🌲 Rejoin if not working"
+subtitle.Font = Enum.Font.Arcade
+subtitle.TextColor3 = Color3.fromRGB(200, 255, 200)
+subtitle.TextScaled = true
+subtitle.Size = UDim2.new(1, 0, 0, 25)
+subtitle.Position = UDim2.new(0, 0, 1, -25)
+subtitle.BackgroundTransparency = 1
+subtitle.Parent = background
+
+-- Minecraft-style visual tree/log (decorative)
+local tree = Instance.new("Frame")
+tree.Size = UDim2.new(0, 30, 0, 60)
+tree.Position = UDim2.new(0, 10, 0, 60)
+tree.BackgroundColor3 = Color3.fromRGB(101, 67, 33) -- tree log
+tree.BorderSizePixel = 0
+tree.Parent = background
+Instance.new("UICorner", tree).CornerRadius = UDim.new(0, 4)
+
+local leaves = Instance.new("Frame")
+leaves.Size = UDim2.new(0, 40, 0, 30)
+leaves.Position = UDim2.new(0, 5, 0, 30)
+leaves.BackgroundColor3 = Color3.fromRGB(34, 139, 34)
+leaves.BorderSizeP
